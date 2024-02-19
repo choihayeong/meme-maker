@@ -1,50 +1,8 @@
 const canvasEl = document.querySelector("#canvas");
 const ctx = canvasEl.getContext("2d");
 
-const CANVAS_WIDTH = 800;
-const CANVAS_HEIGHT = 800;
-
-// default
-canvasEl.width = CANVAS_WIDTH;
-canvasEl.height = CANVAS_HEIGHT;
-
-let isPainting = false;
-
-// user가 마우스를 움직일때마다 moveTo() 메서드 호출
-const onMove = (event) => {
-  if (isPainting) {
-    ctx.lineTo(event.offsetX, event.offsetY);
-    ctx.stroke();
-
-    return;
-  }
-
-  // ctx.beginPath();
-  ctx.moveTo(event.offsetX, event.offsetY);
-};
-
-canvasEl.addEventListener("mousemove", onMove);
-
-// user가 마우스를 눌렀는지 확인(mousedown)
-const startPainting = () => {
-  isPainting = true;
-};
-const cancelPainting = () => {
-  isPainting = false;
-  ctx.beginPath();
-};
-
-canvasEl.addEventListener("mousedown", startPainting);
-canvasEl.addEventListener("mouseup", cancelPainting);
-canvasEl.addEventListener("mouseleave", cancelPainting);
-
-
-// draw with colors
 const lineWidthEl = document.querySelector("#lineWidth");
 const paintColorEl = document.querySelector("#paintColor");
-ctx.strokeStyle = paintColorEl.value;
-ctx.fillStyle = paintColorEl.value;
-ctx.lineWidth = lineWidthEl.value;
 
 const onLineWidthChange = (event) => {
   ctx.lineWidth = event.target.value;
@@ -97,11 +55,11 @@ const onModeClick = () => {
 
 modeButtonEl.addEventListener("click", onModeClick);
 
-// fill
+// fill the canvas all the way event
 const onCanvasClick = () => {
   if (isFilling) {
     // canvasEl.
-    ctx.fillRect(0, 0 , CANVAS_WIDTH, CANVAS_HEIGHT);
+    ctx.fillRect(0, 0 , 800, 800);
     ctx.fill();
   }
 }
@@ -109,13 +67,39 @@ const onCanvasClick = () => {
 canvasEl.addEventListener("click", onCanvasClick);
 
 
-// destroy(reset)
-const destoryButtonEl = document.querySelector("#destroyButton");
+// 
+canvasEl.width = 800;
+canvasEl.height = 800;
+ctx.strokeStyle = paintColorEl.value;
+ctx.fillStyle = paintColorEl.value;
+ctx.lineWidth = lineWidthEl.value;
 
-const onDestroyClick = () => {
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 0 , CANVAS_WIDTH, CANVAS_HEIGHT);
-  ctx.fill();
+let isPainting = false;
+
+// user가 마우스를 움직일때마다 moveTo() 메서드 호출
+const onMove = (event) => {
+  if (isPainting) {
+    ctx.lineTo(event.offsetX, event.offsetY);
+    ctx.stroke();
+
+    return;
+  }
+
+  // ctx.beginPath();
+  ctx.moveTo(event.offsetX, event.offsetY);
+}
+
+canvasEl.addEventListener("mousemove", onMove);
+
+// user가 마우스를 눌렀는지 확인(mousedown)
+const startPainting = () => {
+  isPainting = true;
+};
+const cancelPainting = () => {
+  isPainting = false;
+  ctx.beginPath();
 };
 
-destoryButtonEl.addEventListener("click", onDestroyClick);
+canvasEl.addEventListener("mousedown", startPainting);
+canvasEl.addEventListener("mouseup", cancelPainting);
+canvasEl.addEventListener("mouseleave", cancelPainting);
