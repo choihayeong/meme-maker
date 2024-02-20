@@ -1,8 +1,12 @@
 const canvasEl = document.querySelector("#canvas");
 const ctx = canvasEl.getContext("2d");
 
-canvasEl.width = 800;
-canvasEl.height = 800;
+const CANVAS_WIDTH = 800;
+const CANVAS_HEIGHT = 800;
+
+// default
+canvasEl.width = CANVAS_WIDTH;
+canvasEl.height = CANVAS_HEIGHT;
 
 let isPainting = false;
 
@@ -38,7 +42,6 @@ canvasEl.addEventListener("mouseleave", cancelPainting);
 // draw line and change color
 const lineWidthEl = document.querySelector("#lineWidth");
 const paintColorEl = document.querySelector("#paintColor");
-
 ctx.strokeStyle = paintColorEl.value;
 ctx.fillStyle = paintColorEl.value;
 ctx.lineWidth = lineWidthEl.value;
@@ -103,9 +106,21 @@ modeButtonEl.addEventListener("click", onModeClick);
  */ 
 const onCanvasClick = () => {
   if (isFilling) {
-    ctx.fillRect(0, 0, 800, 800);
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     ctx.fill();
   }
 };
 
 canvasEl.addEventListener("click", onCanvasClick);
+
+
+// handling destroy(reset) button
+const destoryButtonEl = document.querySelector("#destroyButton");
+
+const onDestroyClick = () => {
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  ctx.fill();
+};
+
+destoryButtonEl.addEventListener("click", onDestroyClick);

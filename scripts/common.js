@@ -38,7 +38,6 @@ canvasEl.addEventListener("mousedown", startPainting);
 canvasEl.addEventListener("mouseup", cancelPainting);
 canvasEl.addEventListener("mouseleave", cancelPainting);
 
-
 // draw with colors
 const lineWidthEl = document.querySelector("#lineWidth");
 const paintColorEl = document.querySelector("#paintColor");
@@ -100,21 +99,19 @@ modeButtonEl.addEventListener("click", onModeClick);
 // fill
 const onCanvasClick = () => {
   if (isFilling) {
-    // canvasEl.
-    ctx.fillRect(0, 0 , CANVAS_WIDTH, CANVAS_HEIGHT);
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     ctx.fill();
   }
-}
+};
 
 canvasEl.addEventListener("click", onCanvasClick);
-
 
 // destroy(reset)
 const destoryButtonEl = document.querySelector("#destroyButton");
 
 const onDestroyClick = () => {
   ctx.fillStyle = "white";
-  ctx.fillRect(0, 0 , CANVAS_WIDTH, CANVAS_HEIGHT);
+  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   ctx.fill();
 };
 

@@ -12,19 +12,19 @@ ctx.lineWidth = 2;
  * new RegExp(/^\#(([0-9a-f]){3}|([0-9a-f]){6}|([0-9a-f]){8})$/i);
  * https://www.geeksforgeeks.org/javascript-generate-random-hex-codes-color/
  */
-const generateRandomColorChip= () => {
+const generateRandomColorChip = () => {
   let letters = "0123456789abcdef";
   let hexCode = "#";
 
   for (let i = 0; i < 6; i++) {
-    hexCode += letters[(Math.floor(Math.random() * letters.length))];
+    hexCode += letters[Math.floor(Math.random() * letters.length)];
   }
 
   return hexCode;
 };
 
 /**
- * @param {Number} count 
+ * @param {Number} count
  * @returns {String | String[]}
  * reference : https://coolors.co/
  */
@@ -47,14 +47,14 @@ const colors = generateColorPalette(10);
 
 const onClick = (event) => {
   ctx.beginPath();
-  ctx.moveTo(400,400);
+  ctx.moveTo(400, 400);
 
   const color = colors[Math.floor(Math.random() * colors.length)];
 
   ctx.strokeStyle = color;
   ctx.lineTo(event.offsetX, event.offsetY);
   ctx.stroke();
-}
+};
 
 // canvasEl.addEventListener("click", onClick);
 canvasEl.addEventListener("mousemove", onClick);

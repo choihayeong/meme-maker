@@ -16,17 +16,17 @@ const onMove = (event) => {
   }
 
   ctx.moveTo(event.offsetX, event.offsetY);
-}
+};
 
 canvasEl.addEventListener("mousemove", onMove);
 
 // user가 마우스를 눌렀는지 확인(mousedown)
 const startPainting = () => {
   isPainting = true;
-}
+};
 const cancelPainting = () => {
   isPainting = false;
-}
+};
 
 canvasEl.addEventListener("mousedown", startPainting);
 canvasEl.addEventListener("mouseup", cancelPainting);
