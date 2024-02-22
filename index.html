@@ -9,114 +9,146 @@
   <body>
     <div class="wrap">
       <div class="container">
-        <canvas id="canvas" class="canvas" width="800" height="800"></canvas>
+        <div class="canvas-wrapper">
+          <canvas id="canvas" class="canvas" width="800" height="800"></canvas>
+        </div>
 
         <div class="tool">
-          <input
-            type="range"
-            id="lineWidth"
-            min="1"
-            max="10"
-            value="3"
-            step="0.5"
-          />
-          <input type="color" id="paintColor" value="#cccccc" />
-          <div class="colorchips">
-            <div
-              class="color-chip"
-              style="background-color: #ff9ff3"
-              data-color="#ff9ff3"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #feca57"
-              data-color="#feca57"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #ee5253"
-              data-color="#ee5253"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #48dbfb"
-              data-color="#48dbfb"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #1dd1a1"
-              data-color="#1dd1a1"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #00d2d3"
-              data-color="#00d2d3"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #54a0ff"
-              data-color="#54a0ff"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #5f27cd"
-              data-color="#5f27cd"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #c8d6e5"
-              data-color="#c8d6e5"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #576574"
-              data-color="#576574"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #01a3a4"
-              data-color="#01a3a4"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #2e86de"
-              data-color="#2e86de"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #341f97"
-              data-color="#341f97"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #8395a7"
-              data-color="#8395a7"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #222f3e"
-              data-color="#222f3e"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #f368e0"
-              data-color="#f368e0"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #ff9f43"
-              data-color="#ff9f43"
-            ></div>
-            <div
-              class="color-chip"
-              style="background-color: #10ac84"
-              data-color="#10ac84"
-            ></div>
+          <div class="tool__item properties">
+            <label for="lineWidth" title="border-width">
+              💅 : 
+              <input
+                type="range"
+                id="lineWidth"
+                min="1"
+                max="10"
+                value="3"
+                step="0.5"
+              />
+            </label>
+
+            <label for="paintColor" title="paint-color">
+              🎨 : 
+              <input type="color" id="paintColor" value="#cccccc" />
+            </label>
           </div>
 
-          <button type="button" id="modeButton">Fill</button>
-          <button type="button" id="destroyButton">Destroy</button>
-          <button type="button" id="eraserButton">Eraser</button>
+          <div class="tool__item palette">
+            <label for="" id="colorPalette">Color Palette</label>
+            <ul class="colorchips" aria-describedby="colorPalette">
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #ff9ff3"
+                data-color="#ff9ff3" aria-label="#ff9ff3"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #feca57"
+                data-color="#feca57" aria-label="#feca57"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #ee5253"
+                data-color="#ee5253" aria-label="#ee5253"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #48dbfb"
+                data-color="#48dbfb" aria-label="#48dbfb"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #1dd1a1"
+                aria-label="#1dd1a1"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #00d2d3"
+                aria-label="#00d2d3"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #54a0ff"
+                aria-label="#54a0ff"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #5f27cd"
+                aria-label="#5f27cd"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #c8d6e5"
+                aria-label="#c8d6e5"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #576574"
+                aria-label="#576574"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #01a3a4"
+                aria-label="#01a3a4"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #2e86de"
+                aria-label="#2e86de"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #341f97"
+                aria-label="#341f97"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #8395a7"
+                aria-label="#8395a7"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #222f3e"
+                aria-label="#222f3e"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #f368e0"
+                aria-label="#f368e0"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #ff9f43"
+                aria-label="#ff9f43"></button>
+              </li>
+              <li>
+                <button type="button" class="color-chip"
+                style="background-color: #10ac84"
+                aria-label="#10ac84"></button>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tool__item controller">
+            <button type="button" id="modeButton">Fill</button>
+            <button type="button" id="destroyButton">Destroy 💣</button>
+            <button type="button" id="eraserButton">Eraser</button>
+          </div>
+
+          <div class="tool__item upload">
+            <label for="memeFile">
+              Add a file 📌
+              <input type="file" id="memeFile" accept="image/*" />
+            </label>
+          </div>
+
+          <div class="tool__item textbox">
+            <input type="text" id="addText" placeholder="Wrtie Something, and then Double Click!" />
+          </div>
+
+          <div class="tool__item save">
+            <button type="button" id="saveButton">Save Current Image 💾</button>
+          </div>
         </div>
       </div>
     </div>
